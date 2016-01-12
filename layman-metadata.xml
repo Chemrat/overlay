@@ -1,5 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <repositories encoding="unicode" version="1.1">
-  <repo priority="50" quality="experimental">
+  <repo priority="50" quality="experimental" status="unofficial">
     <name>earshark</name>
     <description>personal overlay, mostly games related</description>
     <homepage>https://github.com/Chemrat/overlay</homepage>
