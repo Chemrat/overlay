@@ -21,7 +21,7 @@ index 351603a..84afcf5 100644
      add_subdirectory(src)
  
 diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
-index 56e4de1..13d50af 100644
+index 56e4de1..0617bf8 100644
 --- a/src/CMakeLists.txt
 +++ b/src/CMakeLists.txt
 @@ -17,5 +17,6 @@ if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
@@ -29,6 +29,6 @@ index 56e4de1..13d50af 100644
  endif()
  
 -add_library(curlcpp STATIC ${CURLCPP_SOURCE})
-+add_library(curlcpp SHARED ${CURLCPP_SOURCE})
++add_library(curlcpp ${CURLCPP_SOURCE})
  target_link_libraries(curlcpp ${CURL_LIBRARY})
 +install (TARGETS curlcpp LIBRARY DESTINATION lib)

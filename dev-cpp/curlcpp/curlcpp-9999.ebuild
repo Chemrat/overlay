@@ -18,3 +18,8 @@ DEPEND="${RDEPEND}"
 src_prepare() {
   epatch "${FILESDIR}/fix_install.patch"
 }
+
+src_configure() {
+  local mycmakeargs="-DBUILD_SHARED_LIBS=1"
+  cmake-utils_src_configure
+}
