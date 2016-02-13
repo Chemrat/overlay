@@ -13,7 +13,7 @@ HOMEPAGE="http://crawl-ref.sourceforge.net/"
 
 LICENSE="crawl"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS=""
 IUSE="tiles"
 
 DEPEND="sys-libs/ncurses
