@@ -6,7 +6,7 @@ inherit qmake-utils git-r3
 
 DESCRIPTION="Tray controls for redshift"
 HOMEPAGE="https://github.com/Chemrat/redshift-qt/"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS=""
 SLOT="0"
 LICENSE="MIT"
 IUSE=""
