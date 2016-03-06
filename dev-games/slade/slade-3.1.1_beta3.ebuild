@@ -4,6 +4,8 @@
 
 EAPI="5"
 
+inherit wxwidgets
+
 MY_PV="3.1.1_b3"
 
 SRC_URI="https://github.com/sirjuddington/${PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
@@ -17,6 +19,7 @@ S="${WORKDIR}/SLADE-${MY_PV}/dist"
 DEPEND="x11-libs/wxGTK:3.0[gstreamer]
 	media-libs/libsfml
 	x11-libs/fltk
+	media-libs/ftgl
 	media-sound/fluidsynth
 	media-libs/freeimage"
 RDEPEND="$DEPEND"
