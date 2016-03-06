@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>jazzvoid@gmail.com</email>
+	</maintainer>
+	<use>
+		<flag name='tiles'>Install graphical version of the game</flag>
+	</use>
+</pkgmetadata>
