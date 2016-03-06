@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-inherit games eutils git-r3 autotools
+inherit games eutils git-r3
 
 EGIT_REPO_URI="https://github.com/crawl/crawl"
 

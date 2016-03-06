@@ -6,5 +6,6 @@
 	</maintainer>
 	<use>
 		<flag name='tiles'>Install graphical version of the game</flag>
+		<flag name='luajit'>Use dev-lang/luajit as scripting backend instead of dev-lang/lua.</flag>
 	</use>
 </pkgmetadata>
