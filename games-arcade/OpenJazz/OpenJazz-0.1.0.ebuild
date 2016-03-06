@@ -1,3 +1,7 @@
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
 EAPI="5"
 
 SRC_URI="https://github.com/Chemrat/openjazz/archive/${PV}.tar.gz"
@@ -11,29 +15,29 @@ IUSE=""
 S="${WORKDIR}/openjazz-${PV}"
 
 DEPEND="media-libs/libsdl
-  media-libs/libmodplug"
+	media-libs/libmodplug"
 RDEPEND="$DEPEND"
 
 inherit games
 inherit cmake-utils
 
 src_configure() {
-    cmake-utils_src_configure
+	cmake-utils_src_configure
 }
 
 src_install() {
-dogamesbin "../"${P}"_build/OpenJazz" || die "dogamesbin failed"
+	dogamesbin "../"${P}"_build/OpenJazz" || die "dogamesbin failed"
 
-insinto "${GAMES_DATADIR}"/${PN}
-doins "openjazz.000" || die "doins failed"
+	insinto "${GAMES_DATADIR}"/${PN}
+	doins "openjazz.000" || die "doins failed"
 
-ewarn ""
-ewarn "You need to put original Jazz Jackrabbit game files in ${GAMES_DATADIR}/${PN}"
-ewarn ""
+	ewarn ""
+	ewarn "You need to put original Jazz Jackrabbit game files in ${GAMES_DATADIR}/${PN}"
+	ewarn ""
 
-# optional
-#doicon ${PN}.xpm
-#make_desktop_entry ${PN} KickBall ${PN}.xpm
+	# optional
+	#doicon ${PN}.xpm
+	#make_desktop_entry ${PN} KickBall ${PN}.xpm
 
-prepgamesdirs
+	prepgamesdirs
 }

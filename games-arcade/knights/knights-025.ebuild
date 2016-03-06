@@ -1,12 +1,12 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Id$
 
 EAPI=5
 
 inherit eutils games
 
-DESCRIPTION="multiplayer game involving several knights who must run around a dungeon and complete various quests"
+DESCRIPTION="multiplayer game, port of Amiga Knights"
 HOMEPAGE="http://www.knightsgame.org.uk/"
 SRC_URI="http://www.knightsgame.org.uk/files/${PN}_${PV}_src.tar.gz"
 
@@ -25,18 +25,17 @@ media-libs/freetype
 RDEPEND="${DEPEND}"
 
 src_compile() {
-    emake PREFIX=${D} BIN_DIR="${GAMES_BINDIR}" DATA_DIR="${GAMES_DATADIR}"/"${PN}" DOC_DIR=/usr/share/doc/"${P}"
+	emake PREFIX="${D}" BIN_DIR="${GAMES_BINDIR}" DATA_DIR="${GAMES_DATADIR}"/"${PN}" DOC_DIR=/usr/share/doc/"${P}"
 }
 
 src_install() {
+	if use game ; then
+		emake install_knights PREFIX="${D}" BIN_DIR="${D}/${GAMES_BINDIR}" DATA_DIR="${D}/${GAMES_DATADIR}/${PN}" DOC_DIR="${D}"/usr/share/doc/"${P}"
+	fi
 
-    if use game ; then
-	emake install_knights PREFIX=${D} BIN_DIR="${D}/${GAMES_BINDIR}" DATA_DIR="${D}/${GAMES_DATADIR}/${PN}" DOC_DIR="${D}"/usr/share/doc/"${P}"
-    fi
-
-    if use server; then
-	emake install_server PREFIX=${D} BIN_DIR="${D}/${GAMES_BINDIR}" DATA_DIR="${D}/${GAMES_DATADIR}/${PN}" DOC_DIR="${D}"/usr/share/doc/"${P}"
-    fi
+	if use server; then
+		emake install_server PREFIX="${D}" BIN_DIR="${D}/${GAMES_BINDIR}" DATA_DIR="${D}/${GAMES_DATADIR}/${PN}" DOC_DIR="${D}"/usr/share/doc/"${P}"
+	fi
 
 #
 ## The .txt and .lua files are required by both the game and server, so we'll install them first.
@@ -53,16 +52,14 @@ src_install() {
 #		dogamesbin ${PN}_server || die "dogamesbin ${PN}_server failed"
 #	fi
 
-    if use doc; then
-	    dohtml -r docs/manual || die "dohtml failed"
-		    dohtml docs/style_new.css || die "dohtml failed"
-			fi
-			
-			    dodoc docs/ACKNOWLEDGMENTS.txt docs/CHANGELOG.txt docs/README.txt README.txt docs/third_party_licences/README.txt || die "dodoc failed"
-			    
-				doicon docs/manual/images/pentagram.png
-				    make_desktop_entry knights "Knights" pentagram "Games;ActionGame;"
-					make_desktop_entry knights_server "Knights server" pentagram "Games;ActionGame;"
-					
-					    prepgamesdirs
-					    }
+	if use doc; then
+		dohtml -r docs/manual || die "dohtml failed"
+		dohtml docs/style_new.css || die "dohtml failed"
+	fi
+
+	dodoc docs/ACKNOWLEDGMENTS.txt docs/CHANGELOG.txt docs/README.txt README.txt docs/third_party_licences/README.txt || die "dodoc failed"
+	doicon docs/manual/images/pentagram.png
+	make_desktop_entry knights "Knights" pentagram "Games;ActionGame;"
+	make_desktop_entry knights_server "Knights server" pentagram "Games;ActionGame;"
+	prepgamesdirs
+}

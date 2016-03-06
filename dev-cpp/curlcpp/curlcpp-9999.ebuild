@@ -1,3 +1,7 @@
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
 EAPI=5
 
 EGIT_REPO_URI="https://github.com/JosephP91/${PN}"
@@ -16,6 +20,6 @@ RDEPEND="net-misc/curl"
 DEPEND="${RDEPEND}"
 
 src_configure() {
-  local mycmakeargs="-DBUILD_SHARED_LIBS=1"
-  cmake-utils_src_configure
+	local mycmakeargs="-DBUILD_SHARED_LIBS=1"
+	cmake-utils_src_configure
 }

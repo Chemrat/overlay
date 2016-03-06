@@ -1,3 +1,7 @@
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
 EAPI="5"
 
 MY_PV="3.1.1_b3"
@@ -11,18 +15,18 @@ LICENSE="GPL-2"
 S="${WORKDIR}/SLADE-${MY_PV}/dist"
 
 DEPEND="x11-libs/wxGTK:3.0[gstreamer]
-  media-libs/libsfml
-  x11-libs/fltk
-  media-sound/fluidsynth
-  media-libs/freeimage"
+	media-libs/libsfml
+	x11-libs/fltk
+	media-sound/fluidsynth
+	media-libs/freeimage"
 RDEPEND="$DEPEND"
 
 src_configure() {
-  # cmake-utils does not allow overriding BUILD_DIR for in-source build
-  # so I have no idea how to build both slade & pk3 targets with it
-  cmake .. -DCMAKE_INSTALL_PREFIX=/usr || die "cmake failed"
+	# cmake-utils does not allow overriding BUILD_DIR for in-source build
+	# so I have no idea how to build both slade & pk3 targets with it
+	cmake .. -DCMAKE_INSTALL_PREFIX=/usr || die "cmake failed"
 }
 
 src_compile() {
-  emake || die "emake failed"
+	emake || die "emake failed"
 }

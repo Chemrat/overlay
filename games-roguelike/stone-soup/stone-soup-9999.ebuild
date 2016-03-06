@@ -1,6 +1,6 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Id$
 
 EAPI="5"
 
@@ -11,7 +11,7 @@ EGIT_REPO_URI="https://github.com/crawl/crawl"
 DESCRIPTION="a rogue-like game"
 HOMEPAGE="http://crawl-ref.sourceforge.net/"
 
-LICENSE="crawl"
+LICENSE="GPL-2 BSD BSD-2 public-domain CC0-1.0 MIT"
 SLOT="0"
 KEYWORDS=""
 IUSE="tiles"
@@ -21,7 +21,7 @@ DEPEND="sys-libs/ncurses
 RDEPEND="sys-libs/ncurses dev-lang/lua \
 	>=dev-db/sqlite-3 sys-devel/bison \
 	sys-devel/flex sys-libs/zlib \
-	dev-util/pkgconfig \
+	virtual/pkgconfig \
 	>=media-libs/sdl-image-1.2 >=media-libs/libsdl-1.2 \
 	media-libs/freetype"
 

@@ -1,6 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Id$
+
 EAPI=5
 inherit eutils cmake-utils
 
@@ -14,7 +15,6 @@ else
 	SRC_URI="https://github.com/jp9000/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	RESTRICT="primaryuri"
 fi
-
 
 DESCRIPTION="Software for recording and streaming live video content"
 HOMEPAGE="https://obsproject.com"

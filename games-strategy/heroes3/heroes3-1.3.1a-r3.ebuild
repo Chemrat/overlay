@@ -1,6 +1,6 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Id$
 
 EAPI=2
 
@@ -12,7 +12,7 @@ LANGPACKVERSION="1.0.0"
 
 inherit eutils games
 
-DESCRIPTION="Heroes of Might and Magic III : The Restoration of Erathia - turn-based 2-D medieval combat"
+DESCRIPTION="Linux port of Heroes of Might and Magic 3"
 HOMEPAGE="http://www.lokigames.com/products/heroes3/"
 
 # PPC is still not tested!
