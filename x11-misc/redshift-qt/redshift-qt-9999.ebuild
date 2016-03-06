@@ -15,9 +15,9 @@ SLOT="0"
 LICENSE="MIT"
 IUSE=""
 
-DEPEND="dev-qt/qtgui
-	dev-qt/qtcore
-	dev-qt/qtwidgets"
+DEPEND="dev-qt/qtgui:5
+	dev-qt/qtcore:5
+	dev-qt/qtwidgets:5"
 RDEPEND="${DEPEND}
 	x11-misc/redshift"
 
