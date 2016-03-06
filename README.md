@@ -5,3 +5,5 @@
 * nethack - menucolor and statuscolor patches (no hpmon)
 * heroes3 - better ebuild (source unknown)
 * OpenJazz
+
+Repoman status: [![Repoman Status](https://travis-ci.org/Chemrat/overlay.svg?branch=master)](https://travis-ci.org/Chemrat/overlay)
