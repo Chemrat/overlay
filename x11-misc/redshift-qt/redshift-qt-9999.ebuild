@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-EGIT_REPO_URI="https://github.com/JosephP91/${PN}"
+EGIT_REPO_URI="https://github.com/Chemrat/${PN}"
 
 inherit qmake-utils git-r3
 
