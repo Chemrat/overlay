@@ -4,15 +4,14 @@
 
 EAPI=5
 
-inherit games eutils cmake-utils
+inherit eutils cmake-utils
 
 OWNER="Torr_Samaho"
 MY_COMMIT="ZA_2.1.2" #tags work too
 
 DESCRIPTION="OpenGL ZDoom port with Client/Server multiplayer"
 HOMEPAGE="http://zandronum.com/"
-SRC_URI="https://bitbucket.org/${OWNER}/${PN}-stable/get/${MY_COMMIT}.tar.bz2 -> ${P}.tar.bz2
-			https://bitbucket.org/api/1.0/repositories/${OWNER}/${PN}-stable/changesets/${MY_COMMIT}?format=yaml -> ${P}.metadata"
+SRC_URI="https://bitbucket.org/${OWNER}/${PN}-stable/get/${MY_COMMIT}.tar.bz2 -> ${P}.tar.bz2"
 
 LICENSE="BSD BUILDLIC Sleepycat"
 SLOT="0"
@@ -38,25 +37,14 @@ RDEPEND="!games-fps/gzdoom
 DEPEND="${RDEPEND}
 			cpu_flags_x86_mmx? ( || ( dev-lang/nasm dev-lang/yasm ) )"
 
-src_unpack() {
-	base_src_unpack
-	S="$(ls -d "${WORKDIR}/${OWNER}-${PN}"-*)"
-}
+S="${WORKDIR}"/Torr_Samaho-zandronum-stable-a3663b0061d5
 
 src_prepare() {
-	# Normally Mercurial would generate gitinfo.h for NETGAMEVERSION
-	# let's do it without Mercurial
-	local timestamp=$(awk -F\' '/utctimestamp/{print $2}' "${DISTDIR}/${P}.metadata")
-	local unixtimestamp=$(date +%s -d "${timestamp}")
-	echo "#define SVN_REVISION_NUMBER ${unixtimestamp}" > src/gitinfo.h
-	echo "#define SVN_REVISION_STRING \"0\"" >> src/gitinfo.h
-	echo "#define HG_REVISION_HASH_STRING \"0\"" >> src/gitinfo.h
-
 	# Use the system sqlite
 	sed -i -e "/add_subdirectory( sqlite )/d" CMakeLists.txt
 
-	# Use default game data path
-	sed -i -e "s:/usr/local/share/:${GAMES_DATADIR}/doom-data/:" src/sdl/i_system.h
+	# Use default data path
+	sed -i -e "s:/usr/local/share/:/usr/share/${PN}/:" src/sdl/i_system.h
 
 	epatch "${FILESDIR}/${PN}-fix-new-fmod.patch"
 }
@@ -98,27 +86,20 @@ src_install() {
 	dohtml docs/console*.{css,html}
 
 	cd "${BUILD_DIR}"
-	insinto "${GAMES_DATADIR}/doom-data"
+	insinto "/usr/share/${PN}"
 	doins *.pk3
 
 	if use opengl; then
-		dogamesbin "${WORKDIR}/${P}_client/${PN}"
+		dobin "${WORKDIR}/${P}_client/${PN}"
 		doicon "${S}/src/win32/zandronum.ico"
 		make_desktop_entry "${PN}" "Zandronum" "${PN}.ico" "Game;ActionGame;"
 	fi
 	if use dedicated; then
-		dogamesbin "${WORKDIR}/${P}_server/${PN}-server"
+		dobin "${WORKDIR}/${P}_server/${PN}-server"
 	fi
-
-	prepgamesdirs
 }
 
 pkg_postinst() {
-	games_pkg_postinst
-
-	elog "Copy or link wad files into ${GAMES_DATADIR}/doom-data/"
-	elog "(the files must be readable by the 'games' group)."
-	elog
 	if use opengl; then
 		elog "To play, install games-util/doomseeker or simply run:"
 		elog "   zandronum"

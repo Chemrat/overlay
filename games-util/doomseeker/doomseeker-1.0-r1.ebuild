@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit cmake-utils games
+inherit cmake-utils
 
 DESCRIPTION="Internet Doom server browser"
 HOMEPAGE="http://doomseeker.drdteam.org/"
@@ -25,18 +25,17 @@ S="${WORKDIR}/${P}_src"
 
 src_prepare() {
 	#libs go into libdir, not share
-	sed -i -e "s:DESTINATION share/:DESTINATION $(games_get_libdir)/:" src/plugins/PluginFooter.txt
-	sed -i -e "s:INSTALL_PREFIX \"/share/doomseeker/\":\"$(games_get_libdir)/doomseeker/\":" src/core/main.cpp
+	sed -i -e "s:DESTINATION share/:DESTINATION /usr/lib/:" src/plugins/PluginFooter.txt
+	sed -i -e "s:INSTALL_PREFIX \"/share/doomseeker/\":\"/usr/lib/doomseeker/\":" src/core/main.cpp
 
 	#fix some paths
-	sed -i -e "s:LIBRARY DESTINATION lib:LIBRARY DESTINATION $(games_get_libdir):" src/wadseeker/CMakeLists.txt
-	sed -i -e "s:/usr/share:${GAMES_PREFIX}/share:" src/core/datapaths.cpp
-	sed -i -e "s:Icon=/usr/local:Icon=${GAMES_PREFIX}:" media/Doomseeker.desktop
+	sed -i -e "s:LIBRARY DESTINATION lib:LIBRARY DESTINATION /usr/lib:" src/wadseeker/CMakeLists.txt
+	sed -i -e "s:Icon=/usr/local:Icon=/usr:" media/Doomseeker.desktop
 }
 
 src_configure() {
 	local mycmakeargs=(
-		-DCMAKE_INSTALL_PREFIX="${GAMES_PREFIX}"
+		-DCMAKE_INSTALL_PREFIX="/usr"
 		$(cmake-utils_use_build fake-plugins FAKE_PLUGINS)
 		$(cmake-utils_use_build legacy-plugins LEGACY_PLUGINS)
 	)

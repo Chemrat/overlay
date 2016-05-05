@@ -18,7 +18,6 @@ DEPEND="media-libs/libsdl
 	media-libs/libmodplug"
 RDEPEND="$DEPEND"
 
-inherit games
 inherit cmake-utils
 
 src_configure() {
@@ -26,18 +25,12 @@ src_configure() {
 }
 
 src_install() {
-	dogamesbin "../"${P}"_build/OpenJazz" || die "dogamesbin failed"
+	dobin "../"${P}"_build/OpenJazz" || die "dobin failed"
 
-	insinto "${GAMES_DATADIR}"/${PN}
+	insinto /usr/share/${PN}
 	doins "openjazz.000" || die "doins failed"
-
-	ewarn ""
-	ewarn "You need to put original Jazz Jackrabbit game files in ${GAMES_DATADIR}/${PN}"
-	ewarn ""
 
 	# optional
 	#doicon ${PN}.xpm
 	#make_desktop_entry ${PN} KickBall ${PN}.xpm
-
-	prepgamesdirs
 }
