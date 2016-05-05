@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Id$
 
 EAPI=5
 
-inherit base games eutils cmake-utils
+inherit games eutils cmake-utils
 
 OWNER="Torr_Samaho"
 MY_COMMIT="ZA_2.1.2" #tags work too
@@ -12,8 +12,7 @@ MY_COMMIT="ZA_2.1.2" #tags work too
 DESCRIPTION="OpenGL ZDoom port with Client/Server multiplayer"
 HOMEPAGE="http://zandronum.com/"
 SRC_URI="https://bitbucket.org/${OWNER}/${PN}-stable/get/${MY_COMMIT}.tar.bz2 -> ${P}.tar.bz2
-         https://bitbucket.org/api/1.0/repositories/${OWNER}/${PN}-stable/changesets/${MY_COMMIT}?format=yaml -> ${P}.metadata
-"
+			https://bitbucket.org/api/1.0/repositories/${OWNER}/${PN}-stable/changesets/${MY_COMMIT}?format=yaml -> ${P}.metadata"
 
 LICENSE="BSD BUILDLIC Sleepycat"
 SLOT="0"
@@ -21,23 +20,23 @@ KEYWORDS="~amd64 ~x86"
 IUSE="cpu_flags_x86_mmx cpu_flags_x86_sse2 dedicated gtk opengl timidity"
 
 REQUIRED_USE="|| ( dedicated opengl )
-              gtk? ( opengl )
-              timidity? ( opengl )"
+			gtk? ( opengl )
+			timidity? ( opengl )"
 
 RDEPEND="!games-fps/gzdoom
-         gtk? ( x11-libs/gtk+:2 )
-         timidity? ( media-sound/timidity++ )
-         opengl? ( media-libs/fmod
-                   media-libs/libsdl
-                   virtual/glu
-                   virtual/jpeg
-                   virtual/opengl
-	)
-	dev-db/sqlite
-	dev-libs/openssl"
+			gtk? ( x11-libs/gtk+:2 )
+			timidity? ( media-sound/timidity++ )
+			opengl? ( media-libs/fmod:1
+					media-libs/libsdl
+					virtual/glu
+					virtual/jpeg:62
+					virtual/opengl
+		)
+		dev-db/sqlite
+		dev-libs/openssl:0"
 
 DEPEND="${RDEPEND}
-        cpu_flags_x86_mmx? ( || ( dev-lang/nasm dev-lang/yasm ) )"
+			cpu_flags_x86_mmx? ( || ( dev-lang/nasm dev-lang/yasm ) )"
 
 src_unpack() {
 	base_src_unpack
