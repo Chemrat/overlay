@@ -1,0 +1,12 @@
+*** src/kded/x11tabletfinder.cpp.orig	2014-07-10 20:56:19.000000000 +0400
+--- src/kded/x11tabletfinder.cpp	2016-05-29 15:18:09.897780934 +0300
+*************** void X11TabletFinder::addDeviceInformati
+*** 134,139 ****
+--- 134,140 ----
+          mapIter = d->tabletMap.insert(serial, TabletInformation (serial));
+      }
+  
++     mapIter.value().set(TabletInfo::TabletName, deviceInformation.getName());
+      mapIter.value().setDevice(deviceInformation);
+  }
+  
