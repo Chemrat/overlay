@@ -6,7 +6,7 @@ EAPI=6
 
 #EGIT_BRANCH="releng3.0"
 KDE_DOC_DIR="doc/user"
-KDE_HANDBOOK="forceoptional"
+#KDE_HANDBOOK="forceoptional"
 VIRTUALX_REQUIRED="test"
 inherit kde5
 
