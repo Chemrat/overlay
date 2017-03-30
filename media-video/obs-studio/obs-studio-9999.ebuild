@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,7 +21,7 @@ HOMEPAGE="https://obsproject.com"
 LICENSE="GPL-2"
 
 SLOT="0"
-IUSE="fdk imagemagick pulseaudio +alsa +qt5 truetype v4l"
+IUSE="fdk imagemagick +qt5 truetype v4l"
 
 DEPEND=">=dev-libs/jansson-2.5
 	media-libs/x264
@@ -31,8 +31,8 @@ DEPEND=">=dev-libs/jansson-2.5
 	x11-libs/libXrandr
 	fdk? ( media-libs/fdk-aac )
 	imagemagick? ( media-gfx/imagemagick )
-	pulseaudio? ( media-sound/pulseaudio )
-	alsa? ( media-libs/alsa-lib )
+	media-sound/pulseaudio
+	media-libs/alsa-lib
 	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtdeclarative:5
@@ -57,17 +57,12 @@ src_prepare() {
 	CMAKE_REMOVE_MODULES_LIST=(FindFreetype)
 
 	cmake-utils_src_prepare
-
-	if use alsa; then
-		epatch "${FILESDIR}"/obs-alsa.patch
-	fi
 }
 
 src_configure() {
 	local mycmakeargs=(
 		$(cmake-utils_use_disable fdk LIBFDK)
 		$(cmake-utils_use imagemagick LIBOBS_PREFER_IMAGEMAGICK)
-		$(cmake-utils_use_disable pulseaudio PULSEAUDIO)
 		$(cmake-utils_use_enable qt5 UI)
 		$(cmake-utils_use_disable qt5 UI)
 		$(cmake-utils_use_disable truetype FREETYPE)
@@ -76,10 +71,4 @@ src_configure() {
 	)
 
 	cmake-utils_src_configure
-}
-
-pkg_postinst() {
-	if ! use pulseaudio && ! use alsa; then
-		ewarn "You need either pulseaudio or alsa use flag enabled to record any sound"
-	fi
 }
