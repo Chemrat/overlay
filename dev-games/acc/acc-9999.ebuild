@@ -1,8 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI="5"
+EAPI=6
 
 inherit git-r3
 
@@ -14,10 +13,6 @@ HOMEPAGE="https://bitbucket.org/Torr_Samaho/acc/"
 LICENSE="ACC"
 
 SLOT="0"
-
-src_compile() {
-	emake || die "emake failed"
-}
 
 src_install() {
 	dobin acc

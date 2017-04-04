@@ -1,8 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=6
 inherit autotools flag-o-matic multilib toolchain-funcs eutils multilib-minimal
 
 DESCRIPTION="Simple Direct Media Layer"
@@ -65,6 +64,8 @@ pkg_setup() {
 }
 
 src_prepare() {
+	eapply_user
+
 	epatch \
 		"${FILESDIR}"/${P}-sdl-config.patch \
 		"${FILESDIR}"/${P}-resizing.patch \
@@ -75,12 +76,12 @@ src_prepare() {
 		"${FILESDIR}"/${P}-caca.patch \
 		"${FILESDIR}"/${P}-SDL_EnableUNICODE.patch \
 		"${FILESDIR}"/${P}-non-exclusive-grab.patch
-	AT_M4DIR="/usr/share/aclocal acinclude" eautoreconf
+	AT_M4DIR="${EPREFIX}/usr/share/aclocal acinclude" eautoreconf
 }
 
 multilib_src_configure() {
 	local myconf=
-	if use !x86 ; then
+	if use !x86 && use !x86-linux ; then
 		myconf="${myconf} --disable-nasm"
 	else
 		myconf="${myconf} --enable-nasm"
@@ -93,7 +94,7 @@ multilib_src_configure() {
 	use joystick || myconf="${myconf} --disable-joystick"
 
 	ECONF_SOURCE="${S}" econf \
-		--disable-rpath \
+		$(use_enable prefix rpath) \
 		--disable-arts \
 		--disable-esd \
 		--enable-events \
