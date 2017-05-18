@@ -1,17 +1,27 @@
-diff --git a/crawl-ref/source/Makefile b/crawl-ref/source/Makefile
-index 7e967f7..7c65a3c 100644
---- a/crawl-ref/source/Makefile
-+++ b/crawl-ref/source/Makefile
-@@ -106,7 +106,7 @@ include Makefile.obj
- # Which C++ standard to support
- STDFLAG = -std=c++11
+From aaa7cde91e4b086164f0c7f46569a34bfbb4e479 Mon Sep 17 00:00:00 2001
+From: hasufell <hasufell@gentoo.org>
+Date: Sun, 3 May 2015 15:05:43 +0200
+Subject: [PATCH] Respect flags and compiler
+
+---
+ Makefile         |  5 ++---
+ rltiles/Makefile | 22 +++++++++++-----------
+ 2 files changed, 13 insertions(+), 14 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 8b9efd9..0f37edf 100644
+--- a/Makefile
++++ b/Makefile
+@@ -103,7 +103,7 @@ include Makefile.obj
+ #
+ 
  
 -CFOTHERS := -pipe $(EXTERNAL_FLAGS)
 +CFOTHERS := $(EXTERNAL_FLAGS)
  CFWARN := 
  CFWARN_L := -Wall -Wformat-security -Wundef
  
-@@ -823,7 +823,6 @@ ifdef FULLDEBUG
+@@ -809,7 +809,6 @@ ifdef FULLDEBUG
  DEFINES += -DFULLDEBUG
  endif
  ifdef DEBUG
@@ -19,7 +29,7 @@ index 7e967f7..7c65a3c 100644
  DEFINES += -DDEBUG
  endif
  ifndef NOWIZARD
-@@ -1679,7 +1678,7 @@ ifdef ANDROID
+@@ -1627,7 +1626,7 @@ ifdef ANDROID
          # prove that tiles were generated properly
  	grep tile_info rltiles/*.cc| head
  else
@@ -28,10 +38,10 @@ index 7e967f7..7c65a3c 100644
  endif
  
  $(TILEDEFSRCS) $(TILEDEFHDRS) $(ORIGTILEFILES): build-rltiles
-diff --git a/crawl-ref/source/rltiles/Makefile b/crawl-ref/source/rltiles/Makefile
-index 3d97d7a..8a366bb 100644
---- a/crawl-ref/source/rltiles/Makefile
-+++ b/crawl-ref/source/rltiles/Makefile
+diff --git a/rltiles/Makefile b/rltiles/Makefile
+index ae11f43..464424f 100644
+--- a/rltiles/Makefile
++++ b/rltiles/Makefile
 @@ -1,7 +1,7 @@
  uname_S := $(shell uname -s)
  
@@ -43,10 +53,10 @@ index 3d97d7a..8a366bb 100644
  # Note: since generation of tiles is done on the host, we don't care about
 @@ -11,7 +11,7 @@ endif
  # is not supported.  If host=target, contribs are enough.
- 
+
  PKGCONFIG = pkg-config
 -CFLAGS := -O2 $(STDFLAG) -g -Wall -Wextra -Wno-parentheses -Wno-unused-parameter
-+CXXFLAGS := $(STDFLAG) -Wall -Wextra -Wno-parentheses -Wno-unused-parameter
++CXXFLAGS += $(STDFLAG) -Wall -Wextra -Wno-parentheses -Wno-unused-parameter
  
  ifdef ANDROID
    CXXFLAGS :=
@@ -65,7 +75,7 @@ index 3d97d7a..8a366bb 100644
  
  ifdef DEBUG
 -CFLAGS += -O0 -DDEBUG -ggdb
-+CXXFLAGS += -O0 -DDEBUG -ggdb
++CXXFLAGS += -DDEBUG
  endif
  
  ifneq (,$(findstring MINGW,$(uname_S)))
@@ -73,8 +83,7 @@ index 3d97d7a..8a366bb 100644
 +LIBS += -lgdi32 -lwinmm -lole32 -loleaut32 -limm32 -lshell32 -lversion -luuid
  endif
  ifeq ($(uname_S),Darwin)
--LDFLAGS += -framework AppKit -framework AudioUnit -framework CoreAudio -framework ForceFeedback -framework Carbon -framework IOKit -framework OpenGL
-+LIBS += -framework AppKit -framework AudioUnit -framework CoreAudio -framework ForceFeedback -framework Carbon -framework IOKit -framework OpenGL
+ LDFLAGS += -framework AppKit -framework AudioUnit -framework CoreAudio -framework ForceFeedback -framework Carbon -framework IOKit -framework OpenGL
  endif
  ifeq ($(uname_S),Linux)
 -LDFLAGS += -ldl -lpthread
@@ -82,26 +91,34 @@ index 3d97d7a..8a366bb 100644
  endif
  
  # Attempt to use a full compiler name, to make
-@@ -101,8 +101,8 @@ tiledef-%.h tiledef-%.cc tileinfo-%.js: dc-%.txt $(TILEGEN)
- endif
+@@ -102,10 +102,10 @@ endif
  	$(QUIET_GEN)$(TILEGEN) -c $<
  
 -# CFLAGS difference check
--TRACK_CFLAGS = $(subst ','\'',$(HOSTCXX) $(CFLAGS))           # (stray ' for highlights)
 +# CXXFLAGS difference check
-+TRACK_CFLAGS = $(subst ','\'',$(HOSTCXX) $(CXXFLAGS))           # (stray ' for highlights)
+-TRACK_CFLAGS = $(subst ','\'',$(HOSTCXX) $(CFLAGS))           # (stray ' for highlights)
++TRACK_CXXFLAGS = $(subst ','\'',$(HOSTCXX) $(CXXFLAGS))           # (stray ' for highlights)
  
  .cflags: .force-cflags
- 	@FLAGS='$(TRACK_CFLAGS)'; \
-@@ -131,9 +131,9 @@ clean:
+-	@FLAGS='$(TRACK_CFLAGS)'; \
++	@FLAGS='$(TRACK_CXXFLAGS)'; \
+     if test x"$$FLAGS" != x"`cat .cflags 2>/dev/null`" ; then \
+ 	echo "    * rebuilding tilegen: new build flags or prefix"; \
+ 	echo "$$FLAGS" > .cflags; \
+@@ -129,10 +129,10 @@ clean:
+ 
  distclean: clean
  
- %.o: %.cc .cflags
+-%.o: %.cc .cflags
 -	$(QUIET_HOSTCXX)$(HOSTCXX) $(CFLAGS) -MMD -c $< -o $@
-+	$(QUIET_HOSTCXX)$(HOSTCXX) $(CXXFLAGS) -MMD -c $< -o $@
++%.o: %.cc
++	$(QUIET_HOSTLINK)$(HOSTCXX) $(CXXFLAGS) -c $< -o $@
  
  $(TILEGEN): $(OBJECTS)
 -	$(QUIET_HOSTLINK)$(HOSTCXX) $(OBJECTS) -o $@ $(LDFLAGS)
-+	$(QUIET_HOSTLINK)$(HOSTCXX) $(OBJECTS) -o $@ $(LIBS)
++	$(QUIET_HOSTLINK)$(HOSTCXX) $(CXXFLAGS) $(OBJECTS) -o $@ $(LDFLAGS) $(LIBS)
  
  .PHONY: all clean distclean
+-- 
+2.3.5
+

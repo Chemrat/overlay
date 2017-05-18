@@ -1,8 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI="5"
+EAPI=6
 
 inherit eutils git-r3
 
@@ -51,7 +50,8 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-respect-flags-and-compiler.patch
+	eapply_user
+#	epatch "${FILESDIR}"/${P}-respect-flags-and-compiler.patch
 
 	rm -r contrib/{fonts,freetype,libpng,pcre,sdl2,sdl2-image,sdl2-mixer,sqlite,zlib} || die
 }
