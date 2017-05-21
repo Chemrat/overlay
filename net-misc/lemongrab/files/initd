@@ -1,0 +1,25 @@
+#!/sbin/openrc-run
+
+command="/usr/bin/lemongrab"
+
+depend() {
+    need net
+}
+
+start() {
+    ebegin "Starting lemongrab"
+    start-stop-daemon --start \
+            --exec $command \
+            --make-pidfile \
+            --background \
+            --pidfile /var/run/lemongrab.pid
+    eend $?
+}
+
+stop() {
+    ebegin "Stopping lemongrab"
+    start-stop-daemon --stop \
+            --exec $command \
+            --pidfile /var/run/lemongrab.pid
+    eend $?
+}
