@@ -46,7 +46,7 @@ src_install() {
 	fowners lemongrab:lemongrab /var/{log,lib}/lemongrab || die "fowners failed"
 	fowners lemongrab:lemongrab /etc/lemongrab || die "fowners failed"
 
-	fperms 6770 /usr/bin/lemongrab || die "fperms failed"
+	fperms 6775 /usr/bin/lemongrab || die "fperms failed"
 	fperms 770 /var/{log,lib}/lemongrab || die "fperms failed"
 	fperms 770 /etc/lemongrab || die "fperms failed"
 }
