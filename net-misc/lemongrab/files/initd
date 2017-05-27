@@ -12,6 +12,8 @@ start() {
             --exec $command \
             --make-pidfile \
             --background \
+            --user lemongrab \
+            --group lemongrab \
             --pidfile /var/run/lemongrab.pid
     eend $?
 }
