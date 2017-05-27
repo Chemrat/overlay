@@ -1,0 +1,30 @@
+#!/sbin/openrc-run
+
+command="/usr/bin/discordPromptBot"
+
+depend() {
+    need net
+}
+
+start() {
+    ebegin "Starting discord bot"
+    start-stop-daemon --start \
+            --make-pidfile \
+            --background \
+            --user discordbot \
+            --group discordbot \
+            --chdir /var/lib/discordbot \
+            --stdout /var/log/discordbot/output.log \
+            --stderr /var/log/discordbot/error.log \
+            --pidfile /var/run/discordbot.pid \
+            -- $command ${discord_bot_id} ${discord_bot_token}
+    eend $?
+}
+
+stop() {
+    ebegin "Stopping discord bot"
+    start-stop-daemon --stop \
+            --pidfile /var/run/discordbot.pid \
+            -- $command ${discord_bot_id} ${discord_bot_token}
+    eend $?
+}
