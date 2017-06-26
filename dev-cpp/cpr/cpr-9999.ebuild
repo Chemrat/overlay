@@ -20,7 +20,7 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="static-libs"
+IUSE="-insecure static-libs"
 
 DEPEND="net-misc/curl"
 RDEPEND="${DEPEND}"
@@ -34,6 +34,7 @@ multilib_src_configure() {
 	local mycmakeargs=(
 		-DUSE_SYSTEM_CURL=ON
 		-DBUILD_CPR_TESTS=OFF
+		-DINSECURE_CURL=$(usex insecure)
 		-DBUILD_SHARED_LIBS=$(usex static-libs OFF ON)
 	)
 	cmake-utils_src_configure
@@ -44,7 +45,7 @@ multilib_src_install() {
 	use static-libs || dolib.so ./lib/libcpr.so
 	dodoc README.md AUTHORS VERSION CONTRIBUTING.md
 	insinto /usr/share/${PN}/
-	sed -i -e '14s/cpr.h/include\/cpr.h/' cpr-config.cmake
+	sed -i -e '14s/cpr.h/cpr\/cpr.h/' cpr-config.cmake
 	doins cpr-config.cmake
 
 	doheader -r ./include/cpr
