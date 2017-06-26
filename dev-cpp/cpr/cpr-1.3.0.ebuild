@@ -20,7 +20,6 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
 IUSE="static-libs"
 
 DEPEND="net-misc/curl"
