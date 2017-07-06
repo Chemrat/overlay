@@ -52,7 +52,7 @@ src_configure() {
 	fi
 
 	econf \
-		--with-lua=$(usex luajit "luajit" "lua") \
+		--with-lua="luajit" \
 		${my_conf}
 }
 
