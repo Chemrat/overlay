@@ -27,6 +27,7 @@ RDEPEND="dev-games/physfs
 	media-libs/libmodplug
 	media-libs/libsdl2[joystick,opengl]
 	media-libs/libvorbis
+	media-libs/libtheora
 	media-libs/openal
 	media-sound/mpg123
 	virtual/opengl
