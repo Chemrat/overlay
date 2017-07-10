@@ -31,7 +31,13 @@ src_unpack() {
 }
 
 src_prepare() {
-	eapply_user
+	default
+
+	# Gentoo bug 620352
+	local f
+	for f in 16 22 32 48; do
+		mv apps/${f}/"numpty physics.png" apps/${f}/"numptyphysics.png" || die
+	done
 
 	use branding || return
 
