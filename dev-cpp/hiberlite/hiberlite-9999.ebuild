@@ -9,10 +9,10 @@ DESCRIPTION="C++ ORM for SQLite"
 HOMEPAGE="https://github.com/paulftw/hiberlite"
 EGIT_REPO_URI="git@github.com:paulftw/hiberlite.git https://github.com/paulftw/hiberlite.git"
 
-LICENSE="BSD-3"
+LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
 
 src_install() {
-    emake INSTALL_PREFIX="${D}/usr" install
+	emake INSTALL_PREFIX="${D}/usr" install
 }
