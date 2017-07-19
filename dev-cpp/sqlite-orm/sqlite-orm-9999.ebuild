@@ -14,5 +14,6 @@ SLOT="0"
 KEYWORDS=""
 
 src_install() {
-	doheader -r ./include/
+	insinto /usr/include/sqlite_orm
+	doins include/sqlite_orm/sqlite_orm.h
 }
