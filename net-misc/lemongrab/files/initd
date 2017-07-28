@@ -14,6 +14,8 @@ start() {
             --background \
             --user lemongrab \
             --group lemongrab \
+            -1 /var/log/lemograb.out \
+            -2 /var/log/lemograb.err \
             --pidfile /var/run/lemongrab.pid
     eend $?
 }
