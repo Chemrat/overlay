@@ -14,8 +14,8 @@ start() {
             --background \
             --user lemongrab \
             --group lemongrab \
-            -1 /var/log/lemograb/stdout \
-            -2 /var/log/lemograb/stderr \
+            -1 /var/log/lemongrab/stdout \
+            -2 /var/log/lemongrab/stderr \
             --pidfile /var/run/lemongrab.pid
     eend $?
 }
