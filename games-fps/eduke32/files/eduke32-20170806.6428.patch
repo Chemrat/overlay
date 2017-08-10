@@ -1,0 +1,49 @@
+diff -Naur eduke32_20170806-6428_orig/source/duke3d/src/common.cpp eduke32_20170806-6428/source/duke3d/src/common.cpp
+--- eduke32_20170806-6428_orig/source/duke3d/src/common.cpp	2017-08-10 19:32:27.644320025 +0300
++++ eduke32_20170806-6428/source/duke3d/src/common.cpp	2017-08-10 20:10:44.585169618 +0300
+@@ -788,6 +788,7 @@
+     addsearchpath("/usr/local/share/games/jfduke3d");
+     addsearchpath("/usr/share/games/eduke32");
+     addsearchpath("/usr/local/share/games/eduke32");
++    addsearchpath("/usr/share/duke32");
+ #elif defined EDUKE32_OSX
+     char buf[BMAX_PATH];
+     int32_t i;
+diff -Naur eduke32_20170806-6428_orig/source/duke3d/src/game.cpp eduke32_20170806-6428/source/duke3d/src/game.cpp
+--- eduke32_20170806-6428_orig/source/duke3d/src/game.cpp	2017-08-10 19:32:27.644320025 +0300
++++ eduke32_20170806-6428/source/duke3d/src/game.cpp	2017-08-10 22:20:34.961659491 +0300
+@@ -6131,21 +6131,14 @@
+ 
+     G_ExtPreInit(argc, argv);
+ 
+-#ifdef __APPLE__
+-    if (!g_useCwd)
+-    {
+         char cwd[BMAX_PATH];
+         char *homedir = Bgethomedir();
+         if (homedir)
+-            Bsnprintf(cwd, sizeof(cwd), "%s/Library/Logs/eduke32.log", homedir);
++            Bsnprintf(cwd, sizeof(cwd), "%s/.local/share/eduke32.log", homedir);
+         else
+             Bstrcpy(cwd, "eduke32.log");
+         OSD_SetLogFile(cwd);
+         Bfree(homedir);
+-    }
+-    else
+-#endif
+-    OSD_SetLogFile(APPBASENAME ".log");
+ 
+     OSD_SetFunctions(GAME_drawosdchar,
+                      GAME_drawosdstr,
+diff -Naur eduke32_20170806-6428_orig/source/libxmp-lite/src/it_load.c eduke32_20170806-6428/source/libxmp-lite/src/it_load.c
+--- eduke32_20170806-6428_orig/source/libxmp-lite/src/it_load.c	2017-08-10 19:32:27.616320027 +0300
++++ eduke32_20170806-6428/source/libxmp-lite/src/it_load.c	2017-08-10 21:49:48.333780411 +0300
+@@ -1189,7 +1189,7 @@
+ 
+ 	/* Alloc extra samples for sustain loop */
+ 	if (mod->smp > 0) {
+-		m->xsmp = (xmp_sample *)calloc(sizeof (struct xmp_sample), mod->smp);
++		m->xsmp = calloc(sizeof (struct xmp_sample), mod->smp);
+ 		if (m->xsmp == NULL) {
+ 			goto err4;
+ 		}
