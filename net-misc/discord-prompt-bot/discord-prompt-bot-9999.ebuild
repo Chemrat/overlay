@@ -5,9 +5,8 @@ EAPI=6
 
 inherit golang-build golang-vcs user
 
-EGO_VENDOR=( "github.com/bwmarrin/discordgo" )
-
-EGO_PN="github.com/Chemrat/discordPromptBot"
+EGO_SRC=github.com/Chemrat/discordPromptBot
+EGO_PN=${EGO_SRC}/...
 
 KEYWORDS=""
 
@@ -19,7 +18,8 @@ SLOT="0"
 IUSE=""
 
 DEPEND=">=dev-lang/go-1.8
-	dev-go/discordgo"
+	dev-go/discordgo
+	dev-go/goquery"
 
 pkg_setup() {
 	enewgroup discordbot
