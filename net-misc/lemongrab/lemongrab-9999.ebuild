@@ -15,6 +15,7 @@ KEYWORDS=""
 
 DEPEND="net-libs/gloox
 		dev-cpp/cpr
+		dev-cpp/sqlite-orm
 		dev-libs/leveldb
 		dev-libs/libevent
 		dev-libs/jsoncpp
