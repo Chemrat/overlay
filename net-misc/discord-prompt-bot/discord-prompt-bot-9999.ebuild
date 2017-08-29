@@ -30,7 +30,6 @@ src_install() {
 	default
 
 	newinitd "${FILESDIR}"/initd discordbot
-	newconfd "${FILESDIR}"/confd discordbot
 
 	dobin discordPromptBot
 

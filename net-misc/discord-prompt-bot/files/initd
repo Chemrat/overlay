@@ -17,7 +17,7 @@ start() {
             --stdout /var/log/discordbot/output.log \
             --stderr /var/log/discordbot/error.log \
             --pidfile /var/run/discordbot.pid \
-            -- $command ${discord_bot_id} ${discord_bot_token}
+            -- $command
     eend $?
 }
 
@@ -25,6 +25,6 @@ stop() {
     ebegin "Stopping discord bot"
     start-stop-daemon --stop \
             --pidfile /var/run/discordbot.pid \
-            -- $command ${discord_bot_id} ${discord_bot_token}
+            -- $command
     eend $?
 }
