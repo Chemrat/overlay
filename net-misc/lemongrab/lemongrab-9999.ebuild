@@ -7,7 +7,7 @@ inherit cmake-multilib git-r3 user
 
 DESCRIPTION="Simple XMPP bot"
 HOMEPAGE="https://github.com/Chemrat/lemongrab"
-EGIT_REPO_URI="git://github.com/Chemrat/lemongrab.git"
+EGIT_REPO_URI="https://github.com/Chemrat/lemongrab.git"
 
 LICENSE="MIT"
 SLOT="0"

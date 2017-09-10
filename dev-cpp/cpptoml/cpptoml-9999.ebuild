@@ -7,7 +7,7 @@ inherit git-r3
 
 DESCRIPTION="cpptoml is a header-only library for parsing TOML"
 HOMEPAGE="https://github.com/skystrife/cpptoml"
-EGIT_REPO_URI="git://github.com/skystrife/cpptoml.git https://github.com/skystrife/cpptoml.git"
+EGIT_REPO_URI="https://github.com/skystrife/cpptoml.git"
 
 LICENSE="cpptoml"
 SLOT="0"

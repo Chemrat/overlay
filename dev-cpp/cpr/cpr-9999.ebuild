@@ -11,7 +11,7 @@ DESCRIPTION="Simple wrapper around libcurl inspired by the Python Requests proje
 HOMEPAGE="https://github.com/whoshuu/cpr"
 
 if [ "$PV" == "9999" ]; then
-	EGIT_REPO_URI="git://github.com/whoshuu/cpr.git https://github.com/whoshuu/cpr.git"
+	EGIT_REPO_URI="https://github.com/whoshuu/cpr.git"
 	KEYWORDS=""
 else
 	SRC_URI="https://github.com/whoshuu/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
