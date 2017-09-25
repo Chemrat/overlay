@@ -3,8 +3,7 @@
 
 EAPI=6
 
-EGIT_BRANCH="releng3.0"
-KDE_DOC_DIR="doc/user"
+KDE_HANDBOOK="forceoptional"
 VIRTUALX_REQUIRED="test"
 inherit kde5
 
@@ -12,11 +11,10 @@ DESCRIPTION="KControl module for Wacom tablets"
 HOMEPAGE="http://kde-apps.org/content/show.php?action=content&content=114856"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE=""
 
 CDEPEND="
-	$(add_frameworks_dep extra-cmake-modules)
 	$(add_frameworks_dep kconfig)
 	$(add_frameworks_dep kconfigwidgets)
 	$(add_frameworks_dep kcoreaddons)
