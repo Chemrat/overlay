@@ -77,7 +77,7 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-libs/boost-1.39:=
 	virtual/pkgconfig
 	sys-devel/gettext
-	dev-qt/qttest:4
+	dev-qt/qttest:5
 	dev-cpp/gmock
 	box? ( dev-cpp/sparsehash )
 	dropbox? ( dev-cpp/sparsehash )
