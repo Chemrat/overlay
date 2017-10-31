@@ -11,7 +11,7 @@ EGIT_REPO_URI="https://github.com/jreese/znc-push.git"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 
 src_install() {
 	insinto /usr/$(get_libdir)/znc/
