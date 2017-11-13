@@ -19,7 +19,7 @@ DEPEND="net-libs/gloox
 		dev-libs/leveldb
 		dev-libs/libevent
 		dev-libs/jsoncpp
-		dev-libs/boost
+		dev-libs/boost:=
 		dev-cpp/glog
 		dev-cpp/cpptoml
 		dev-libs/pugixml"
