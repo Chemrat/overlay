@@ -13,6 +13,9 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
 
+DEPEND="dev-db/sqlite:3"
+RDEPEND="${DEPEND}"
+
 src_install() {
 	insinto /usr/include/sqlite_orm
 	doins include/sqlite_orm/sqlite_orm.h
