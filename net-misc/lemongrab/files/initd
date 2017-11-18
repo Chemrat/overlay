@@ -1,29 +1,15 @@
 #!/sbin/openrc-run
 
+supervisor=supervise-daemon
 command="/usr/bin/lemongrab"
+command_user="lemongrab"
+supervise_daemon_args="--stderr /var/log/lemongrab/stderr --stdout /var/log/lemongrab/stdout"
+pidfile="/var/run/lemongrab.pid"
+
+respawn_delay=10
+respawn_period=300
 
 depend() {
+    use logger dns
     need net
-}
-
-start() {
-    ebegin "Starting lemongrab"
-    start-stop-daemon --start \
-            --exec $command \
-            --make-pidfile \
-            --background \
-            --user lemongrab \
-            --group lemongrab \
-            -1 /var/log/lemongrab/stdout \
-            -2 /var/log/lemongrab/stderr \
-            --pidfile /var/run/lemongrab.pid
-    eend $?
-}
-
-stop() {
-    ebegin "Stopping lemongrab"
-    start-stop-daemon --stop \
-            --exec $command \
-            --pidfile /var/run/lemongrab.pid
-    eend $?
 }
