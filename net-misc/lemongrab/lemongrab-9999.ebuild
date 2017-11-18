@@ -22,7 +22,8 @@ DEPEND="net-libs/gloox
 		dev-libs/boost:=
 		dev-cpp/glog
 		dev-cpp/cpptoml
-		dev-libs/pugixml"
+		dev-libs/pugixml
+		dev-cpp/hexicord"
 
 RDEPEND="${DEPEND}"
 
