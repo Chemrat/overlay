@@ -13,9 +13,10 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
 
-DEPEND="net-libs/gloox
+IUSE="test"
+
+COMMON_DEPEND="net-libs/gloox
 		dev-cpp/cpr
-		dev-cpp/sqlite-orm
 		dev-libs/leveldb
 		dev-libs/libevent
 		dev-libs/jsoncpp
@@ -25,7 +26,11 @@ DEPEND="net-libs/gloox
 		dev-libs/pugixml
 		dev-cpp/hexicord"
 
-RDEPEND="${DEPEND}"
+DEPEND="${COMMON_DEPEND}
+		dev-cpp/sqlite-orm
+		test? ( dev-cpp/gtest )"
+
+RDEPEND="${COMMON_DEPEND}"
 
 pkg_setup() {
 	enewgroup lemongrab
