@@ -18,7 +18,7 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 
-LICENSE="BSD-3"
+LICENSE="BSD"
 SLOT="0"
 
 DEPEND="net-irc/libcommuni[qt5]"
