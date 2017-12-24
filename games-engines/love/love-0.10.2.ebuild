@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit eutils fdo-mime gnome2-utils
+inherit eutils gnome2-utils xdg-utils
 
 if [[ ${PV} == 9999* ]]; then
 	inherit autotools mercurial
@@ -75,16 +75,16 @@ pkg_preinst() {
 
 pkg_postinst() {
 	if [[ "${SLOT}" != "0" ]]; then
-		fdo-mime_desktop_database_update
-		fdo-mime_mime_database_update
+		fdo-xdg_desktop_database_update
+		xdg_mimeinfo_database_update
 		gnome2_icon_cache_update
 	fi
 }
 
 pkg_postrm() {
 	if [[ "${SLOT}" != "0" ]]; then
-		fdo-mime_desktop_database_update
-		fdo-mime_mime_database_update
+		fdo-xdg_desktop_database_update
+		xdg_mimeinfo_database_update
 		gnome2_icon_cache_update
 	fi
 }
