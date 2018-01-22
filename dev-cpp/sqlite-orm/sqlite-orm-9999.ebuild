@@ -18,5 +18,5 @@ RDEPEND="${DEPEND}"
 
 src_install() {
 	insinto /usr/include/sqlite_orm
-	doins include/sqlite_orm/sqlite_orm.h
+	doins include/sqlite_orm/sqlite_orm1.h
 }
