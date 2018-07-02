@@ -15,8 +15,10 @@ KEYWORDS="~amd64 ~x86"
 IUSE="fake-plugins legacy-plugins"
 
 DEPEND="app-arch/bzip2
-	dev-qt/qtcore:4
-	dev-qt/qtgui:4
+	dev-qt/qtcore:5
+	dev-qt/qtgui:5
+	dev-qt/qtmultimedia:5
+	dev-qt/linguist-tools:5
 	sys-libs/zlib"
 RDEPEND="${DEPEND}"
 
