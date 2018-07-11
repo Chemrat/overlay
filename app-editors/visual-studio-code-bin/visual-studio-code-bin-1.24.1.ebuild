@@ -20,6 +20,7 @@ DEPEND="
 	>=x11-libs/gtk+-2.24.8-r1:2
 	x11-libs/cairo
 	gnome-base/gconf
+	sys-apps/ripgrep
 "
 
 RDEPEND="${DEPEND}"
