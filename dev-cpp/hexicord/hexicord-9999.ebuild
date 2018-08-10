@@ -8,9 +8,9 @@ inherit cmake-multilib
 [ "$PV" == "9999" ] && inherit git-r3
 
 DESCRIPTION="Discord API library for C++ using boost libraries"
-HOMEPAGE="https://github.com/foxcpp/Hexicord"
+HOMEPAGE="https://github.com/Chemrat/Hexicord"
 
-EGIT_REPO_URI="https://github.com/foxcpp/Hexicord.git"
+EGIT_REPO_URI="https://github.com/Chemrat/Hexicord.git"
 KEYWORDS=""
 
 EGIT_SUBMODULES=( '*' )
