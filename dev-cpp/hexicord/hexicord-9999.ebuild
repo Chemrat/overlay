@@ -31,8 +31,8 @@ src_prepare() {
 
 multilib_src_configure() {
 	local mycmakeargs=(
-		-DBUILD_STATIC_LIBS=$(usex static-libs ON OFF)
-		-DBUILD_SHARED_LIBS=ON
+		-DHEXICORD_STATIC=$(usex static-libs ON OFF)
+		-DHEXICORD_SHARED=ON
 		-DHEXICORD_DEBUG_LOG=$(usex debug)
 	)
 	cmake-utils_src_configure
