@@ -1,3 +1,4 @@
 # Personal projects, undocumented, not for general use
 net-misc/lemongrab
 net-misc/discord-prompt-bot
+dev-cpp/hexicord

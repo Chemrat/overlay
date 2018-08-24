@@ -13,6 +13,7 @@ HOMEPAGE="https://github.com/Chemrat/Hexicord"
 EGIT_REPO_URI="https://github.com/Chemrat/Hexicord.git"
 KEYWORDS=""
 
+EGIT_BRANCH="cpprest"
 EGIT_SUBMODULES=( '*' )
 
 LICENSE="MIT"
@@ -21,7 +22,8 @@ IUSE="static-libs
 	debug"
 
 DEPEND="dev-libs/boost:=
-	dev-libs/openssl:="
+	dev-libs/openssl:=
+	dev-cpp/cpprestsdk"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
