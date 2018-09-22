@@ -78,10 +78,6 @@ DEPEND="${COMMON_DEPEND}
 	sys-devel/gettext
 	vc? ( >=dev-libs/vc-1.1.0 )
 "
-RDEPEND="${COMMON_DEPEND}
-	!app-office/calligra:4[calligra_features_krita]
-	!app-office/calligra-l10n:4[calligra_features_krita(+)]
-"
 
 # bug 630508
 RESTRICT+=" test"
