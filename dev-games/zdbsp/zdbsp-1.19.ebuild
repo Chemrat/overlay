@@ -8,7 +8,7 @@ inherit cmake-utils
 SRC_URI="https://github.com/rheit/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 DESCRIPTION="Standalone version of ZDoom's internal node builder"
 HOMEPAGE="http://zdoom.org/"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ~x86"
 SLOT="0"
 LICENSE="GPL-2"
 

@@ -12,7 +12,7 @@ RESTRICT="mirror"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="+client server gif"
 
 REQUIRED_USE="|| ( client server )"
