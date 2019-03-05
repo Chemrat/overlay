@@ -28,6 +28,7 @@ RDEPEND="${DEPEND}"
 src_prepare() {
 	default
 	multilib_copy_sources
+	epatch "${FILESDIR}"/curle-ssl-cacert-fix.patch
 }
 
 multilib_src_configure() {

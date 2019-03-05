@@ -1,0 +1,41 @@
+From 6d4ae7129093a47534166015a076e7bc83233677 Mon Sep 17 00:00:00 2001
+From: Po-Chuan Hsieh <sunpoet@sunpoet.net>
+Date: Sat, 3 Nov 2018 18:21:41 +0800
+Subject: [PATCH] Fix build with curl 7.62.0
+
+from CHANGES:
+ssl: deprecate CURLE_SSL_CACERT in favour of a unified error code
+Long live CURLE_PEER_FAILED_VERIFICATION
+---
+ cpr/error.cpp | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/cpr/error.cpp b/cpr/error.cpp
+index 713cb10..7228b58 100644
+--- a/cpr/error.cpp
++++ b/cpr/error.cpp
+@@ -22,8 +22,10 @@ ErrorCode Error::getErrorCodeForCurlError(std::int32_t curl_code) {
+             return ErrorCode::OPERATION_TIMEDOUT;
+         case CURLE_SSL_CONNECT_ERROR:
+             return ErrorCode::SSL_CONNECT_ERROR;
++#if LIBCURL_VERSION_NUM < 0x073e00
+         case CURLE_PEER_FAILED_VERIFICATION:
+             return ErrorCode::SSL_REMOTE_CERTIFICATE_ERROR;
++#endif
+         case CURLE_GOT_NOTHING:
+             return ErrorCode::EMPTY_RESPONSE;
+         case CURLE_SSL_ENGINE_NOTFOUND:
+@@ -38,8 +40,13 @@ ErrorCode Error::getErrorCodeForCurlError(std::int32_t curl_code) {
+             return ErrorCode::SSL_LOCAL_CERTIFICATE_ERROR;
+         case CURLE_SSL_CIPHER:
+             return ErrorCode::GENERIC_SSL_ERROR;
++#if LIBCURL_VERSION_NUM >= 0x073e00
++        case CURLE_PEER_FAILED_VERIFICATION:
++            return ErrorCode::SSL_REMOTE_CERTIFICATE_ERROR;
++#else
+         case CURLE_SSL_CACERT:
+             return ErrorCode::SSL_CACERT_ERROR;
++#endif
+         case CURLE_USE_SSL_FAILED:
+             return ErrorCode::GENERIC_SSL_ERROR;
+         case CURLE_SSL_ENGINE_INITFAILED:
