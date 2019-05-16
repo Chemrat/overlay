@@ -39,7 +39,7 @@ RDEPEND="${PYTHON_DEPS}
 DEPEND="${RDEPEND}"
 
 src_install() {
-        cmake-utils_src_install
+	cmake-utils_src_install
 
-        make_desktop_entry hotspot Hotspot hotspot Development;
+	make_desktop_entry hotspot Hotspot hotspot Development;
 }
