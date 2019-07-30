@@ -20,7 +20,6 @@ DEPEND="
 	>=x11-libs/gtk+-2.24.8-r1:2
 	x11-libs/cairo
 	gnome-base/gconf
-	sys-apps/ripgrep
 "
 
 RDEPEND="${DEPEND}"
@@ -38,7 +37,8 @@ src_install(){
 	make_desktop_entry "${PN}" "Visual Studio Code" "${PN}" "Development;IDE"
 	doicon "${FILESDIR}/${PN}.png"
 	fperms +x "/opt/${PN}/code"
-	fperms +x "/opt/${PN}/libnode.so"
+	fperms +x "/opt/${PN}/resources/app/node_modules.asar.unpacked/vscode-ripgrep/bin/rg"
+#	fperms +x "/opt/${PN}/libnode.so"
 	fperms +x "/opt/${PN}/libffmpeg.so"
 	insinto "/usr/share/licenses/${PN}"
 	newins "resources/app/LICENSE.rtf" "LICENSE.rtf"
