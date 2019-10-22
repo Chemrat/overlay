@@ -1,16 +1,22 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 KDE_HANDBOOK="forceoptional"
 VIRTUALX_REQUIRED="test"
 inherit kde5
 
-EGIT_REPO_URI="https://github.com/psifidotos/applet-window-buttons"
-
 DESCRIPTION="Plasma 5 applet in order to show window buttons in your panels"
 HOMEPAGE="https://github.com/psifidotos/applet-window-buttons"
+
+if [ "$PV" == "9999" ]; then
+	EGIT_REPO_URI="https://github.com/psifidotos/${PN}.git"
+	KEYWORDS=""
+else
+	SRC_URI="https://github.com/psifidotos/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~x86"
+fi
 
 LICENSE="GPL-2"
 KEYWORDS=""
