@@ -3,9 +3,9 @@
 
 EAPI=7
 
-KDE_HANDBOOK="forceoptional"
+ECM_HANDBOOK="forceoptional"
 VIRTUALX_REQUIRED="test"
-inherit kde5
+inherit ecm
 
 DESCRIPTION="Plasma 5 applet in order to show window buttons in your panels"
 HOMEPAGE="https://github.com/psifidotos/applet-window-buttons"
@@ -19,18 +19,15 @@ else
 fi
 
 LICENSE="GPL-2"
-KEYWORDS=""
+SLOT="5"
 IUSE=""
 
 CDEPEND="
-	$(add_frameworks_dep kcoreaddons)
-	$(add_frameworks_dep kdeclarative)
-	$(add_frameworks_dep plasma)
-	$(add_frameworks_dep plasmaquick)
-	$(add_frameworks_dep ki18n)
-	$(add_qt_dep qtqml)
-	$(add_qt_dep qtgui)
-	$(add_qt_dep qtquick)
+	kde-frameworks/kcoreaddons:5
+	kde-frameworks/kdeclarative:5
+	kde-frameworks/plasma:5
+	kde-frameworks/ki18n:5
+	dev-qt/qtgui:5
 "
 DEPEND="${CDEPEND}
 	sys-devel/gettext
