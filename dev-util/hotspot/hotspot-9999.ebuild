@@ -1,13 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
 EGIT_REPO_URI="https://github.com/KDAB/hotspot"
-
-CMAKE_MIN_VERSION="3.1.0"
 
 inherit cmake eutils git-r3
 
