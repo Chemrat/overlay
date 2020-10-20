@@ -24,7 +24,7 @@ DEPEND="x11-libs/wxGTK:3.0[gstreamer]
 RDEPEND="$DEPEND"
 
 src_configure() {
-	# cmake-utils does not allow overriding BUILD_DIR for in-source build
+	# cmake does not allow overriding BUILD_DIR for in-source build
 	# so I have no idea how to build both slade & pk3 targets with it
 	cmake .. -DCMAKE_INSTALL_PREFIX=/usr || die "cmake failed"
 }

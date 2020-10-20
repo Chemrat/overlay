@@ -30,5 +30,5 @@ multilib_src_configure() {
 	local mycmakeargs=(
 		-DBUILD_STATIC_LIBS=$(usex static-libs)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }

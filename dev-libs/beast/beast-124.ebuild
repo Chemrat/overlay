@@ -34,7 +34,7 @@ multilib_src_configure() {
 		-DBeast_BUILD_EXAMPLES=OFF
 		-DBeast_BUILD_TESTS=OFF
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 multilib_src_install() {

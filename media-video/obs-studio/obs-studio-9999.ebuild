@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils cmake-utils
+inherit eutils cmake
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -54,19 +54,19 @@ RDEPEND="${DEPEND}"
 src_prepare() {
 	CMAKE_REMOVE_MODULES_LIST=(FindFreetype)
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_disable fdk LIBFDK)
-		$(cmake-utils_use imagemagick LIBOBS_PREFER_IMAGEMAGICK)
-		$(cmake-utils_use_enable qt5 UI)
-		$(cmake-utils_use_disable qt5 UI)
-		$(cmake-utils_use_disable truetype FREETYPE)
-		$(cmake-utils_use_disable v4l V4L2)
+		$(cmake_use_disable fdk LIBFDK)
+		$(cmake_use imagemagick LIBOBS_PREFER_IMAGEMAGICK)
+		$(cmake_use_enable qt5 UI)
+		$(cmake_use_disable qt5 UI)
+		$(cmake_use_disable truetype FREETYPE)
+		$(cmake_use_disable v4l V4L2)
 		-DUNIX_STRUCTURE=1
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }

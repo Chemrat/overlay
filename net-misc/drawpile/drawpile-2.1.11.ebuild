@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="Networking drawing (whiteboarding) program"
 HOMEPAGE="http://drawpile.net/"
@@ -39,5 +39,5 @@ src_configure() {
 		-DSERVER=$(usex server)
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }

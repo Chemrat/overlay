@@ -5,7 +5,7 @@ EAPI=6
 
 EGIT_REPO_URI="https://github.com/Dobiasd/FunctionalPlus/"
 
-inherit cmake-utils git-r3
+inherit cmake git-r3
 
 DESCRIPTION="Functional Programming Library for C++"
 HOMEPAGE="https://github.com/Dobiasd/FunctionalPlus/"

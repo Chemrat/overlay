@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit cmake-utils
+inherit cmake
 
 SRC_URI="https://github.com/rheit/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 DESCRIPTION="Standalone version of ZDoom's internal node builder"

@@ -38,7 +38,7 @@ multilib_src_configure() {
 		-DINSECURE_CURL=$(usex insecure)
 		-DBUILD_SHARED_LIBS=$(usex static-libs OFF ON)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 multilib_src_install() {

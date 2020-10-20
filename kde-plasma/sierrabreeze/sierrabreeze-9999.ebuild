@@ -5,7 +5,7 @@ EAPI=7
 
 EGIT_REPO_URI="https://github.com/ishovkun/SierraBreeze"
 
-inherit cmake-utils git-r3
+inherit cmake git-r3
 
 DESCRIPTION="OSX-like window decoration for KDE Plasma written in C++"
 HOMEPAGE="https://github.com/ishovkun/SierraBreeze"

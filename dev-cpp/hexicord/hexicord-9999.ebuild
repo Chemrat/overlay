@@ -37,5 +37,5 @@ multilib_src_configure() {
 		-DHEXICORD_SHARED=ON
 		-DHEXICORD_DEBUG_LOG=$(usex debug)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }

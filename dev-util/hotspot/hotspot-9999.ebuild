@@ -9,7 +9,7 @@ EGIT_REPO_URI="https://github.com/KDAB/hotspot"
 
 CMAKE_MIN_VERSION="3.1.0"
 
-inherit cmake-utils eutils git-r3
+inherit cmake eutils git-r3
 
 DESCRIPTION="a GUI for the Linux perf profiler"
 HOMEPAGE="https://github.com/KDAB/hotspot"
@@ -39,7 +39,7 @@ RDEPEND="${PYTHON_DEPS}
 DEPEND="${RDEPEND}"
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	make_desktop_entry hotspot Hotspot hotspot Development;
 }

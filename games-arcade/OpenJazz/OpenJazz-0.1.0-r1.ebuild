@@ -17,10 +17,10 @@ DEPEND="media-libs/libsdl
 	media-libs/libmodplug"
 RDEPEND="$DEPEND"
 
-inherit cmake-utils
+inherit cmake
 
 src_configure() {
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {

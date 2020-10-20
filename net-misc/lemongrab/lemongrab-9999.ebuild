@@ -39,7 +39,7 @@ pkg_setup() {
 
 src_install() {
 	default
-	cmake-utils_src_install
+	cmake_src_install
 
 	newinitd "${FILESDIR}"/initd lemongrab
 	insinto /etc/lemongrab
