@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{8,9} )
 VALA_USE_DEPEND=vapigen
 
 inherit gnome2 multilib-minimal python-any-r1 vala virtualx
@@ -12,6 +12,8 @@ HOMEPAGE="https://wiki.gnome.org/Projects/Libsecret"
 
 LICENSE="LGPL-2.1+ Apache-2.0" # Apache-2.0 license is used for tests only
 SLOT="0"
+
+DISTUTILS_USE_SETUPTOOLS="no"
 
 IUSE="+crypt +introspection test +vala"
 RESTRICT="!test? ( test )"
