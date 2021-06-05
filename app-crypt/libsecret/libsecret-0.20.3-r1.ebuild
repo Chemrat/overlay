@@ -3,7 +3,6 @@
 
 EAPI=6
 PYTHON_COMPAT=( python3_{8,9} )
-VALA_USE_DEPEND=vapigen
 
 inherit gnome2 multilib-minimal python-any-r1 vala virtualx
 
@@ -46,7 +45,6 @@ DEPEND="${RDEPEND}
 			introspection? ( dev-python/pygobject:3[${PYTHON_USEDEP}] )')
 		introspection? ( >=dev-libs/gjs-1.32 )
 	)
-	vala? ( $(vala_depend) )
 "
 
 python_check_deps() {
