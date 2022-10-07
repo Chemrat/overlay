@@ -1,0 +1,11 @@
+DEFINED_PHASES=install unpack
+DEPEND=>=dev-vcs/git-1.8.2.1[curl]
+DESCRIPTION=Zandronum Action Code script Compiler
+EAPI=6
+HOMEPAGE=https://bitbucket.org/Torr_Samaho/acc/
+INHERIT=git-r3
+LICENSE=ACC
+PROPERTIES=live
+SLOT=0
+_eclasses_=git-r3	b9ac6f96d2a88edb5b351df634dc5e53
+_md5_=7571a2fdfe99a5a94e76bcb23ccc5ced
