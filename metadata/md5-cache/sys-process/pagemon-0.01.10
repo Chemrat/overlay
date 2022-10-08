@@ -8,4 +8,4 @@ LICENSE=GPL-2
 RDEPEND=sys-libs/ncurses:*
 SLOT=0
 SRC_URI=https://github.com/ColinIanKing/pagemon/archive/V0.01.10.tar.gz -> pagemon-0.01.10.tar.gz
-_md5_=94539a2a898667c72fd388946292678b
+_md5_=d2951e461823dc05d9ec5eea25ed39e2

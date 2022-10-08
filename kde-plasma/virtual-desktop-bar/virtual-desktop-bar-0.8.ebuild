@@ -9,13 +9,12 @@ inherit ecm
 
 DESCRIPTION="KDE Plasma panel applet for managing virtual desktops"
 HOMEPAGE="https://github.com/wsdfhjxc/virtual-desktop-bar"
+KEYWORDS="~amd64 ~x86"
 
 if [ "$PV" == "9999" ]; then
 	EGIT_REPO_URI="https://github.com/wsdfhjxc/virtual-desktop-bar.git"
-	KEYWORDS=""
 else
 	SRC_URI="https://github.com/wsdfhjxc/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
 fi
 
 LICENSE="GPL-3"

@@ -43,7 +43,7 @@ RDEPEND="
 	net-misc/curl
 	sys-apps/util-linux
 	sys-libs/zlib
-	virtual/jpeg:=
+	virtual/jpeg
 	x11-libs/libX11
 	x11-libs/pixman"
 

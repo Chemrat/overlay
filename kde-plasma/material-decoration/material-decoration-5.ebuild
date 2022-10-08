@@ -9,13 +9,12 @@ inherit ecm
 
 DESCRIPTION="Plasma 5 applet in order to show window buttons in your panels"
 HOMEPAGE="https://github.com/Zren/material-decoration"
+KEYWORDS="~amd64 ~x86"
 
 if [ "$PV" == "9999" ]; then
 	EGIT_REPO_URI="https://github.com/Zren/${PN}.git"
-	KEYWORDS=""
 else
 	SRC_URI="https://github.com/Zren/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
 fi
 
 LICENSE="GPL-2"

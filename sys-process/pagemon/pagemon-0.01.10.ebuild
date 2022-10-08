@@ -7,13 +7,12 @@ EAPI=6
 
 DESCRIPTION="pagemon is an interactive memory/page monitoring tool"
 HOMEPAGE="https://github.com/ColinIanKing/pagemon/"
+KEYWORDS="~amd64 ~x86"
 
 if [ "$PV" == "9999" ]; then
 	EGIT_REPO_URI="https://github.com/ColinIanKing/pagemon.git"
-	KEYWORDS=""
 else
 	SRC_URI="https://github.com/ColinIanKing/${PN}/archive/V${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
 fi
 
 LICENSE="GPL-2"

@@ -3,21 +3,20 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9,10} )
+PYTHON_COMPAT=( python3_{8,9,10,11} )
 
 inherit desktop distutils-r1
 
 DESCRIPTION="Application launcher for Linux"
 HOMEPAGE="https://ulauncher.io"
+KEYWORDS="~amd64 ~x86"
 
 if [[ ${PV} == 9999 ]];then
 	inherit git-r3
 	SRC_URI=""
-	KEYWORDS=""
 	EGIT_REPO_URI="https://github.com/Ulauncher/${PN^}.git"
 else
 	SRC_URI="https://github.com/Ulauncher/${PN^}/releases/download/${PV}/${PN}_${PV}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
 	S="${WORKDIR}/${PN}"
 fi
 
@@ -33,7 +32,7 @@ RDEPEND="${DEPEND}
 	dev-python/dbus-python[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	dev-python/pyinotify[${PYTHON_USEDEP}]
-	dev-python/python-levenshtein[${PYTHON_USEDEP}]
+	dev-python/Levenshtein[${PYTHON_USEDEP}]
 	dev-python/pyxdg[${PYTHON_USEDEP}]
 	dev-python/websocket-client[${PYTHON_USEDEP}]
 	dev-libs/gobject-introspection:=

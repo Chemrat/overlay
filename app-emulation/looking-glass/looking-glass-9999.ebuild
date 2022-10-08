@@ -28,7 +28,8 @@ RDEPEND="dev-libs/libconfig:0=
 	virtual/glu"
 DEPEND="${RDEPEND}
 	app-emulation/spice-protocol"
-BDEPEND="virtual/pkgconfig"
+BDEPEND="virtual/pkgconfig
+	app-arch/unzip"
 
 CMAKE_USE_DIR="${S}"/client
 
